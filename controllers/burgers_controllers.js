@@ -4,7 +4,7 @@ var router = express.Router();
 var burger = require("../models/burger");
 
 router.get("/", function(req, res) {
-    burger.all(function(data) {
+    burger.selectAll(function(data) {
         var hbsObject = {
             burgers: data
         };
@@ -14,7 +14,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-    burger.create([
+    burger.insertOne([
         "name", "devoured"
     ], [
         req.body.name, req.body.devoured
@@ -28,7 +28,7 @@ router.put("/api/cats/:id", function(req, res) {
 
     console.log("condition", condition);
 
-    burger.update({
+    burger.updateOne({
         devoured: req.body.sleepy
     }, condition, function(result) {
         if (result.changedRows == 0) {
