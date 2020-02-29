@@ -11,8 +11,8 @@ var orm = {
         });
     },
 
-    insertOne: function(table, cols, vals) {
-        var queryString = "INSERT INTO ?? (??) VALUES ?"
+    insertOne: function(table, cols, vals, cb) {
+        var queryString = "INSERT INTO ?? (??) VALUES (?)"
         connection.query(queryString, [table, cols, vals], function(err, res) {
             if (err) {
                 throw err;
@@ -21,7 +21,7 @@ var orm = {
         });
     },
 
-    updateOne: function(table, newCol, newVal, condition, oldVal) {
+    updateOne: function(table, newCol, newVal, condition, oldVal, cb) {
         var queryString = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
         connection.query(queryString, [table, newCol, newVal, condition, oldVal], function(err, res) {
             if (err) {
@@ -32,4 +32,4 @@ var orm = {
     }
 };
 
-module.exports = orm
+module.exports = orm;

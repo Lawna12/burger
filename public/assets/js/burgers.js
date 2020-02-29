@@ -1,7 +1,8 @@
 $(function() {
     $(".change-devour").on("click", function() {
         var id = $(this).data("id");
-        var newDevour = $(this).data("newDevour");
+        var newDevour = $(this).data("newdevour");
+        console.log(newDevour)
 
         var newlyDevoured = {
             devoured: newDevour
@@ -13,7 +14,9 @@ $(function() {
         }).then(
             function() {
                 console.log("changed burger to", newlyDevoured);
+                location.reload();
             }
+            
         );
     });
 
